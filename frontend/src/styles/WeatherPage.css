@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+.main {
+  background-color: #fff;
+}
+
+.logoContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: flex-start;
+}
+
+.headerContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  border-bottom: 3px solid #212121;
+  border-top: 3px solid #212121;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 10px;
+}
+
+.rowContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+.weatherContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: self-start;
+  justify-content: space-between;
+}
+
+.weatherMapWrapper {
+  width: 320px;
+  height: 300px;
+  position: relative;
+}
+
+.extraInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: self-start;
+  padding: 10px;
+  margin: 10px;
+}
