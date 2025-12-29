@@ -6,7 +6,10 @@ export const WeatherMap = ({ lat, lon }: WeatherMapProps) => {
   const position: [number, number] = [lat, lon];
 
   return (
-    <div style={{ width: "100%", height: "200px" }}>
+    <div style={{ 
+      width: "100%", 
+      height: "200px",
+      border: "3px solid #212121" }}>
       <MapContainer
         center={position}
         zoom={10}

@@ -26,14 +26,14 @@ const StyledWrapper = styled.div<{ variant: "black" | "pink" }>`
     font-weight: 900;
     text-transform: uppercase;
     margin-bottom: 15px;
+    border-bottom: 3px solid #212121;
     color: ${({ variant }) => (variant === "pink" ? "#c71175" : "#000")};
     text-align: left;
   }
 
   .cards-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    flex-direction: column;
   }
 `;
 

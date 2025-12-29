@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import type { ExtendedCardProps } from "../types/components/ExtendedCardProps";
 
-const NewsLetterCard = ({ text, title, variant = "black" }: ExtendedCardProps) => {
+const NewsLetterCard = ({ text, title, variant = "black", fullWidth = false }: ExtendedCardProps) => {
   return (
-    <StyledWrapper variant={variant}>
+    <StyledWrapper variant={variant} fullWidth={fullWidth}>
       <div className="card">
         <span className="card__title">{title}</span>
         <p className="card__content">{text}</p>
@@ -12,9 +12,9 @@ const NewsLetterCard = ({ text, title, variant = "black" }: ExtendedCardProps) =
   );
 };
 
-const StyledWrapper = styled.div<{ variant: "black" | "pink" }>`
+const StyledWrapper = styled.div<{ variant: "black" | "pink";  fullWidth: boolean }>`
   .card {
-    width: 350px;
+    width: ${({ fullWidth }) => (fullWidth ? "100%" : "350px")};
     padding: 25px;
     background: ${({ variant }) => (variant === "pink" ? "#c71175" : "#fff")};
     border: 6px solid #000;

@@ -33,7 +33,7 @@
 .weatherContainer {
   display: flex;
   flex-direction: row;
-  align-items: self-start;
+  justify-items: center;
   justify-content: space-between;
 }
 

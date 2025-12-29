@@ -38,7 +38,7 @@ const WeatherPage = () => {
   };
 
   const handleSourceCodeButton = () => {
-    window.open("https://github.com");
+    window.open("https://github.com/naomiu66/WeatherApp");
   };
 
   //   if(loading) return <Loader/>
@@ -73,21 +73,25 @@ const WeatherPage = () => {
             <div className="weatherCard">
               <WeatherCard weatherData={weather}></WeatherCard>
             </div>
-
-            {weather.tip && (
-              <div className="tipsCard">
-                <NewsLetterCard
-                  text={weather.tip}
-                  title="TIPS"
-                  variant="pink"
-                />
-              </div>
-            )}
-
             <div className="weatherMapWrapper">
               <WeatherMap lat={weather.weather.lat} lon={weather.weather.lon} />
             </div>
           </div>
+
+          {weather.tip && (
+            <div className="weatherFooter">
+              {weather.tip && (
+                <div className="tipsCard">
+                  <NewsLetterCard
+                    text={weather.tip}
+                    title="TIPS"
+                    variant="pink"
+                    fullWidth={true}
+                  />
+                </div>
+              )}
+            </div>
+          )}
         </ContentContainerCard>
       )}
 
@@ -98,9 +102,17 @@ const WeatherPage = () => {
               title="CITY INFO"
               text={`${weather.city.country},${weather.city.name},${weather.city.region}. Population: ${weather.city.population}`}
             />
-            <NewsLetterCard title="DESCRIPTION" text={weather.description} />
             <NewsLetterCard title="FACT" text={weather.fact} />
           </div>
+
+          {weather.description && (
+            <div className="extraInfoFooter">
+              <NewsLetterCard title="DESCRIPTION"
+               text={weather.description}
+               variant="pink"
+               fullWidth={true} />
+            </div>
+          )}
         </ContentContainerCard>
       )}
     </div>
