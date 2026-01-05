@@ -5,7 +5,7 @@ const {
 
 const { getCityByCoords } = require("../services/geoDbService");
 const { getCityDescription } = require("../services/wikiService");
-const { getWeatherTip, getCityFact } = require('../services/openaiService')
+const { getWeatherTip, getCityFact } = require("../services/openaiService");
 
 const getWeather = async (req, res) => {
   try {
@@ -16,14 +16,14 @@ const getWeather = async (req, res) => {
     if (city) {
       weather = await getWeatherByCity(city);
       if (!weather)
-        return res.status(500).json({
-          message: "Internal server error",
+        return res.status(404).json({
+          message: "City or weather not found",
         });
     } else if (lat && lon) {
       weather = await getWeatherByCoordinates(lat, lon);
       if (!weather)
-        return res.status(500).json({
-          message: "Internal server error",
+        return res.status(404).json({
+          message: "Not found weather",
         });
     } else {
       return res.status(400).json({
@@ -31,17 +31,17 @@ const getWeather = async (req, res) => {
       });
     }
 
-    if (!weather) return res.status(500).json({ message: "Weather error" });
-
     const cityInfo = await getCityByCoords(weather.lat, weather.lon);
 
-    const description = cityInfo ? await getCityDescription(cityInfo.name, cityInfo.country) : null;
+    const description = cityInfo
+      ? await getCityDescription(cityInfo.name, cityInfo.country)
+      : null;
 
-    const message = `Temp: ${weather.temp}, Feels Like: ${weather.feelsLike}. Wind speed: ${weather.windSpeed}, Description: ${weather.description}`
+    const message = `Temp: ${weather.temp}, Feels Like: ${weather.feelsLike}. Wind speed: ${weather.windSpeed}, Description: ${weather.description}`;
 
     const weatherTip = await getWeatherTip(message);
 
-    const cityFact = cityInfo ? await getCityFact(cityInfo.name) : null
+    const cityFact = cityInfo ? await getCityFact(cityInfo.name) : null;
 
     return res.json({
       weather,
@@ -49,8 +49,7 @@ const getWeather = async (req, res) => {
       description,
       tip: weatherTip,
       fact: cityFact,
-    })
-
+    });
   } catch (err) {
     console.error(`Error in fetching weather data: ${err}`);
     return res.status(500).json({

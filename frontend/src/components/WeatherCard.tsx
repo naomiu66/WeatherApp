@@ -43,7 +43,7 @@ const StyledWrapper = styled.div`
     padding: 15px;
     background: #4ade80;
     color: #000;
-    border: 3px solid #000;
+    border: 6px solid #000;
     box-shadow: 12px 12px 0 #000;
     transition: all 0.3s ease;
     cursor: pointer;

@@ -23,7 +23,7 @@ const StyledWrapper = styled.div`
     height: 250px;
     translate: -6px -6px;
     background: #ff66a3;
-    border: 3px solid #000000;
+    border: 6px solid #000000;
     box-shadow: 12px 12px 0 #000000;
     overflow: hidden;
     transition: all 0.3s ease;
